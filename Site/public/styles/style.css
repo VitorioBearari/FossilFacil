@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jura:wght@300..700&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* fonte para tudo */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel+Decorative:wght@400;700;900&family=Jura:wght@300..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* fonte para titulos */
+
+* {
+    font-family: "Nunito", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* color:#40270e marrom*/
+    /* color: #f2d7a9 bege */
+}
+
+
+
+/* navbar */
+.menuNavbar a{
+    text-decoration: none;
+    color: #40270e
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px 20px 30px;
+    background-color: #FFFFFF;
+    text-decoration: none;
+    color:#40270e;
+    border-bottom: 5px solid #40270e;
+}
+
+.menuNavbar {
+    display: flex;
+    gap:40px;
+    font-size: 30px;
+    text-decoration: none;
+
+}
+
+
+.navbar .logoFossilFacil img {
+    width: 100px;
+    height: auto;
+}
+
+.menuNavbar a:hover{
+    font-size: 32px;
+    background-color: #40270e;
+    color: #f2d7a9;
+    transition: all 0.3s ease;
+}
+
+/* POMBO */
+
+.pombo {
+    height: 813px;
+    display: flex;
+    background-color: black;
+    color:#FFFFFF;
+}
+
+.imagemPombo {
+    width: 50%;
+    /* height: 100%; */
+}
+
+.imagemPombo img {
+    width: 813px;
+}
+
+
+.textoPombo {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.textoPombo h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+}
+
+.textoPombo span {
+    font-size: 20px;
+}
+
+.textoPombo button {
+    border: 1px;
+    border-color: #FFFFFF;
+    background-color: black;
+    color:white;
+    width: 230px;
+    font-size: 30px;
+    transition: all 0.3s ease;
+}
+
+.textoPombo button:hover{
+    background-color: #FFFFFF;
+    color:black;
+    font-size: 35px;
+}
+
+/* que historia é essa */
+.explicacao {
+    display: flex;
+    flex-direction: row;
+    padding: 40px 50px 40px 50px;
+    width: 100%;
+    height: 90vh;
+    /* background-image: url("../styles/assets/passaros.png"); */
+    background-color: #ffffff;
+    color:#40270e;
+}
+
+.textoExplicacao {
+    display: flex;
+    flex-direction: column;
+    gap:50px;
+    width: 50%;
+    font-size: 25px;
+}
+
+.textoExplicacao h2 {
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 60px;
+}
+
+.imagemExplicacao {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.imagemExplicacao img {
+    border-radius: 15px;
+    height: 100%;
+}
+
+
+/* login e cadastro */
+.mainRegistro {
+    padding: 30px;
+    /* width: 100vw; */
+    height: 814px;
+    background-image: url("./assets/raptorLogin.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.centroLogin {
+    display: flex;
+    width: 800px;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    gap: 25px;
+    align-items: center;
+}
+
+.imagemLogin {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.imagemLogin img {
+    width: 100%;
+}
+
+.formularioLogin{
+    font-size: 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.formularioLogin label {
+    font-size: 25px;
+}
+
+.formularioLogin input, input::placeholder {
+    border: 0px;
+    background-color: #40270e;
+    color:#FFFFFF;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.formularioLogin button {
+    border: 1px;
+    border-color: #FFFFFF;
+    background-color: rgb(255, 255, 255);
+    color: #40270e;
+    width: 230px;
+    font-size: 30px;
+    transition: all 0.3s ease;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.formularioLogin button:hover{
+    background-color: #40270e;
+    color: #FFFFFF;
+    font-size: 35px;
+}
+
+.formularioLogin span {
+    font-size: 13px;
+    align-self: center;
+    text-decoration: none;
+}
+
+.formularioLogin a {
+    color: #12202c;
+    text-decoration: none;
+    align-self: center;
+}
