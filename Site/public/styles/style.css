@@ -153,9 +153,11 @@
     /* width: 100vw; */
     height: 847px;
     background-image: url("./assets/raptorLogin.png");
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover;
+    background-size: cover;         /* cobre toda a tela */
+    background-position: center;    /* centraliza a imagem */
+    background-repeat: no-repeat;   /* evita repetição */
+    background-attachment: fixed; 
+
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -283,6 +285,7 @@
     width: 70%;
     height: 700px;
     gap: 5px;
+    border-radius: 5px;
 }
 
 .quiz img {
@@ -332,4 +335,27 @@
     background-color: #12202c;
     color: #E8E8E8;
     font-size: 35px;
+}
+
+.resultados {
+    display: flex;
+    align-items: center;
+}
+
+#dashboardBtn {
+    border: 1px;
+    border-color: #E8E8E8;
+    background-color: rgb(255, 255, 255);
+    color: #40270e;
+    width: 230px;
+    font-size: 27px;
+    transition: all 0.3s ease;
+    align-self: center;
+    border-radius: 10px;
+}
+
+#dashboardBtn:hover{
+    background-color: #40270e;
+    color: #E8E8E8;
+    font-size: 30px;
 }

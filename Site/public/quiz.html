@@ -137,7 +137,13 @@
             </div>
         </div>
     
-        <button class="">Finalizar quiz</button>
+        <button id="finalizarBtn" onclick="finalizarQuiz()">Finalizar quiz</button>
+
+        <div id="resultados" class="resultados quiz" style="display: none;">
+            <h2 id="texto-resultado"></h2>
+            <img src="styles/assets/resultados.png" alt="imagemResultados">
+            <button id="dashboardBtn" onclick="verDashboard()">Ver Estatísticas</button>
+        </div>
     </div>
     
 </body>
