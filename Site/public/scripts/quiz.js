@@ -10,8 +10,10 @@ function finalizarQuiz() {
     // const resp9 = document.querySelector('input[name="resp9"]:checked');
     // const resp10 = document.querySelector('input[name="resp10"]:checked'); método burro.
     var pontuacao = 0;
-    dashboardBtn = document.getElementById("dashboardBtn")
-    textoResultado = document.getElementById("texto-resultado")
+    const dashboardBtn = document.getElementById("dashboardBtn")
+    const textoResultado = document.getElementById("texto-resultado")
+    const textoErros = document.getElementById("texto-erros")
+    let mensagem = ""
 
     const gabarito = [
         "passaro", 
@@ -44,9 +46,11 @@ function finalizarQuiz() {
             console.log(`Acertou a questão ${i + 1}`)
             pontuacao+=10
         } else {
-            console.log(`Errou a questão ${i + 1}`)
+            mensagem += `Errou a questão ${i + 1}, a respostas correta era: ${gabarito[i]}<br>`
         }
     }
+
+    textoErros.innerHTML = ""
 
     console.log("Respostas:", respostas);
     console.log("Gabarito:", gabarito);
@@ -54,6 +58,7 @@ function finalizarQuiz() {
     // alert("Você acertou " + pontuacao + " de 10 perguntas!");
 
     textoResultado.innerHTML = `Sua pontuação final foi: <br> ${pontuacao}/100.`
+    textoErros.innerHTML += mensagem
     document.getElementById("resultados").style.display = "inline-flex";
 
     resultados.scrollIntoView({ behavior: "smooth" });
