@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>FóssilFácil | Login</title>
+    <script src="./js/sessao.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logoFossilFacil">
+            <img src="styles/assets/logo.png" alt="logoFossilFacil">
+        </div>
+        <div class="menuNavbar">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="sobremim.html">Sobre Mim</a>
+            <span>|</span>
+            <a href="quiz.html">Quiz</a>
+            <span>|</span>
+            <a href="login.html">Login</a>
+        </div>
+    </div>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+    <div class="mainRegistro">
+
+        <div class="centroLogin">
+            <div class="imagemLogin">
+                <img src="styles/assets/logo.png" alt="logoFossilFacil">
+            </div>
+            <div class="formularioLogin">
+                <h1>Bem Vindo de volta!</h1>
+                <label for="email_input">Insira seu email:</label>
+                <input type="text" id="email_input" placeholder="Seu email aqui...">
+                <label for="ipt_senha">Insira sua senha:</label>
+                <input type="password" id="senha_input" placeholder="Sua senha aqui...">
+                <button onclick="entrar()">Entrar</button>
+                <span>Não tem uma conta? <a href="cadastro.html">Registre-se aqui</a></span>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="styles/assets/circle-loading.gif" id="loading-gif">
+                </div>
+
+                <div id="div_erros_login"></div>       
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar); // parece que para aqui, não segue
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            // console.log(resposta)
+
+            if (resposta.ok) {
+                // console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id; // não faz o sessionStorage, pq não continua
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                            window.location = "quiz.html"; // apesar de que aparece o loading, mas não muda de pagina nem nd
+                        alert("logou")
+                    }, "1000"); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
