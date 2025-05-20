@@ -10,7 +10,7 @@ function finalizarQuiz() {
     // const resp9 = document.querySelector('input[name="resp9"]:checked');
     // const resp10 = document.querySelector('input[name="resp10"]:checked'); método burro.
     var pontuacao = 0;
-    const dashboardBtn = document.getElementById("dashboardBtn")
+    // const dashboardBtn = document.getElementById("dashboardBtn")
     const textoResultado = document.getElementById("texto-resultado")
     const textoErros = document.getElementById("texto-erros")
     let mensagem = ""
