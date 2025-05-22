@@ -40,7 +40,7 @@ function salvarResultado(req, res) {
         });
     }
 
-    // Chama o model para salvar acertos + RESPOSTAS
+    // Chama o model para salvar acertos + RESPOSTAperguntaIndexS
     quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
         .then(() => {
             res.status(200).json({ acertos: acertos });

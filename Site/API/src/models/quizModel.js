@@ -22,7 +22,7 @@ function salvarResultadoCompleto(idUsuario, acertos, respostas) {
             const respostasInserts = respostas.map(resp => {
                 return `
                     INSERT INTO respostasUsuario (id, perguntaIndex, respostaDada, isCorreta)
-                    VALUES (${idResultadoQuiz}, ${resp.perguntaIndex}, '${resp.respostaDada}', ${resp.isCorreta});
+                    VALUES (${resp.idResultadoQuiz}, ${resp.perguntaIndex}, '${resp.respostaDada}', ${resp.isCorreta});
                 `;
             });
 
