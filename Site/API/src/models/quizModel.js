@@ -8,7 +8,7 @@ function salvarResultadoCompleto(idUsuario, acertos, respostas) {
 
     console.log("Inserindo resultado no banco...");
 
-    // Primeiro salva a tentativa na ResultadoQuiz
+    // Primeiro salva a tentativa na Resultado
     return database.executar(inserirResultadoQuery)
         .then(resultado => {
             // Depois de inserir, precisamos saber o ID que foi gerado
@@ -22,7 +22,7 @@ function salvarResultadoCompleto(idUsuario, acertos, respostas) {
             const respostasInserts = respostas.map(resp => {
                 return `
                     INSERT INTO respostasUsuario (id, perguntaIndex, respostaDada, isCorreta)
-                    VALUES (${resp.idResultadoQuiz}, ${resp.perguntaIndex}, '${resp.respostaDada}', ${resp.isCorreta});
+                    VALUES (${idResultadoQuiz}, ${resp.perguntaIndex}, '${resp.respostaDada}', ${resp.isCorreta});
                 `;
             });
 

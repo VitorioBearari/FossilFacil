@@ -162,6 +162,9 @@
             console.log(selecionado)
             if (selecionado) {
                 respostasUsuario[`resp${i}`] = selecionado.value;
+            } else {
+                alert("Deve responder todas as perguntas!")
+                return
             }
         }
         
@@ -180,6 +183,7 @@
         .then(res => res.json())
         .then(res => {
             alert(`Você acertou ${res.acertos} de 10!`);
+            console.log(res.acertos)
         });
     }
 

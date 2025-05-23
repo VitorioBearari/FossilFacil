@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS FossilFacil.usuario (
 
 CREATE TABLE IF NOT EXISTS FossilFacil.resultadoQuiz (
   id INT NOT NULL AUTO_INCREMENT,
-  fkUsuario INT,
+  fkUsuario INT UNIQUE,
   acertos INT,
   data_resposta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
@@ -59,5 +59,4 @@ CREATE TABLE IF NOT EXISTS FossilFacil.respostasUsuario (
 
 SELECT * FROM resultadoQuiz;
 SELECT * FROM usuario;
-
-SELECT * FROM respostasUsuario;
+SELECT * FROM FossilFacil.respostasUsuario;

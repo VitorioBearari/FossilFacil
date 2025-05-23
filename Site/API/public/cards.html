@@ -28,7 +28,24 @@
         <h1>Conheça mais sobre os dinossauros</h1>
         
         <div class="displayCards">
-
+            <div class="card">
+                <div class="card-frente"><img src="styles/assets/anquilossauro.png" alt="imagemDInossauroCard"></div>
+                <div class="card-costas">
+                    <h2>Anquilossauro</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore odit eligendi atque dolorum, magni provident odio aliquid amet rerum explicabo culpa facilis tempora, nihil quidem, commodi inventore impedit voluptate enim?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex recusandae aliquam est praesentium excepturi voluptatem fugiat repudiandae quasi necessitatibus accusamus cum, blanditiis ab vitae cupiditate. Quasi ut obcaecati facere quia.</p>
+                </div>
+            </div>
         </div>
     </div>
 
+
+<script>
+const cards = document.getElementsByClassName("card");
+
+for (let i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", function () {
+      cards[i].classList.toggle("mostrar");
+    });
+}
+</script>

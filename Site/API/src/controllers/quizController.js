@@ -21,7 +21,7 @@ function salvarResultado(req, res) {
         return res.status(400).json({ erro: "Dados incompletos!" });
     }
 
-    let acertos = 0;
+    var acertos = 0;
     const respostasDetalhadas = [];
 
     // Percorre as 10 perguntas para comparar com o gabarito
@@ -31,7 +31,7 @@ function salvarResultado(req, res) {
         const correta = gabarito[chave];
         const isCorreta = respostaDada === correta;
 
-        if (isCorreta) acertos++;
+        if (isCorreta)  acertos++
 
         respostasDetalhadas.push({
             perguntaIndex: i,
@@ -39,9 +39,9 @@ function salvarResultado(req, res) {
             isCorreta: isCorreta
         });
     }
-
+    console.log(acertos);
     // Chama o model para salvar acertos + RESPOSTAperguntaIndexS
-    quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
+   quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
         .then(() => {
             res.status(200).json({ acertos: acertos });
         })
@@ -49,7 +49,7 @@ function salvarResultado(req, res) {
             console.log(erro);
             res.status(500).json({ erro: "Erro ao salvar respostas." });
         });
-}
+} 
 
 module.exports = {
     salvarResultado
