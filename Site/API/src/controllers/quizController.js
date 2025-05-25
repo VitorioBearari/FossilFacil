@@ -41,16 +41,30 @@ function salvarResultado(req, res) {
     }
     console.log(acertos);
     // Chama o model para salvar acertos + RESPOSTAperguntaIndexS
-   quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
+//    quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
+//         .then(() => {
+//             res.status(200).json({ acertos: acertos });
+//         })
+//         .catch(erro => {
+//             console.log(erro);
+//             res.status(500).json({ erro: "Erro ao salvar respostas." });
+//         });
+// } 
+    quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
         .then(() => {
             res.status(200).json({ acertos: acertos });
         })
         .catch(erro => {
             console.log(erro);
-            res.status(500).json({ erro: "Erro ao salvar respostas." });
+
+            if (erro.code === 'ER_DUP_ENTRY') {
+                res.status(400).json({ mensagem: "Você já respondeu o quiz." });
+            } else {
+                res.status(500).json({ erro: "Erro ao salvar respostas." });
+            }
         });
-} 
+    }
 
 module.exports = {
     salvarResultado
-};
+}
