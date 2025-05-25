@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cinzel+Decorative:wght@400;700;900&family=Jura:wght@300..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Numans&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); /* fonte para titulos */
 
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
 * {
     font-family: "Nunito", sans-serif;
     margin: 0px;
@@ -495,6 +497,23 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px;
+
+    background-image: url("/styles/assets/cardsWallpaper.png");
+    background-size: cover;         /* cobre toda a tela */
+    background-position: center;    /* centraliza a imagem */
+    background-repeat: no-repeat;   /* evita repetição */
+    background-attachment: fixed;   /* mantém o fundo fixo */
+}
+
+.mainCards h1{
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    color:#f7f7f7;
+    text-align: center;
+    font-size: 60px;
+    font-stretch: condensed;
+    transform: scaleY(1.5);
+    margin-bottom: 30px;
 }
 
 .displayCards {
@@ -505,13 +524,23 @@ body {
 }
 
 .card {
-  width: 400px;
-  height: 550px;
-  position: relative;
-  cursor: pointer;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: rotate 500ms linear;
+    width: 400px;
+    height: 550px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: rotate 500ms linear;
+}
+
+
+.card h2 {
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.card p {
+    font-size: 25px;
 }
 
 .card img {
@@ -529,7 +558,7 @@ body {
 .card-costas {
   border: 3px solid #40270e;
   border-radius: 15px;
-  padding: 1em;
+  padding: 1.5em;
   position: absolute;
   inset: 0;
   display: grid;
