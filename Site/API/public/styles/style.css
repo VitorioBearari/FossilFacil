@@ -57,6 +57,36 @@ body {
     transition: all 0.3s ease;
 }
 
+.userNavbar {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.userNavbar h3{
+    font-size: 20px;
+}
+
+.userNavbar button {
+    padding: 10px;
+    border: 2px solid #a90000;
+    border-color: #f7f7f7;
+    background-color: #a90000;
+    color:#f7f7f7;
+    /* width: 230px; */
+    /* font-size: 30px; */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+
+
+.userNavbar button:hover{
+    background-color: #f7f7f7;
+    color:#a90000;
+    border: 2px solid #a90000 
+}
+
 /* POMBO */
 
 .pombo {

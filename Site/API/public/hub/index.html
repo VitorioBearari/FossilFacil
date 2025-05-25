@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="icon" href="../styles/assets/icone.png">
+    <script src="../js/sessao.js"></script>
+    <title>FóssilFácil</title>
+</head>
+<body onload="validarSessao()">
+    <div class="navbar">
+        <div class="logoFossilFacil">
+            <a href="index.html">
+                <img src="../styles/assets/logo.png" alt="logoFossilFacil">
+            </a>
+        </div>
+        <div class="menuNavbar">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="sobremim.html">Sobre Mim</a>
+            <span>|</span>
+            <a href="cards.html">Cards</a>
+            <span>|</span>
+            <a href="../quiz.html">Quiz</a>
+        </div>
+        <div class="userNavbar">
+            <h3>Ola, <span id="b_usuario">usuario</span>!</h3>
+            <!-- <a href="../index.html"> -->
+            <button onclick="limparSessao()">Sair</button>
+            <!-- </a> -->
+        </div>
+    </div>
+
+    <div class="pombo">
+        <div class="imagemPombo">
+            <img src="../styles/assets/pombo.png" alt="ImagemPomboImpactante">
+        </div>
+        <div class="textoPombo">
+            <h1>Você acha que os dinossauros desapareceram?</h1>
+            <span>E se eu te dissesse que eles ainda estão aqui, olhando pra <strong>você?</strong></span>
+            <a href="index.html#div_explicacao">
+                <button>Entenda como</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="explicacao" id="div_explicacao">
+        <div class="textoExplicacao">
+            <h2>Que história é essa?</h2>
+            <span>
+                Quando pensamos em dinossauros, imaginamos monstros gigantes e aterrorizantes.<br>
+                Mas o que poucos sabem é que os dinossauros nunca desapareceram completamente. <strong>Eles evoluíram.</strong><br>
+                
+                Hoje, as aves são consideradas os dinossauros modernos.<br>
+                
+                Pesquisas mostram que animais como pombos, galinhas e avestruzes compartilham traços anatômicos diretos com os antigos dinossauros — principalmente com os chamados terópodes, o mesmo grupo que inclui o famoso Tyrannosaurus rex e o ágil Velociraptor.<br>
+                
+                Vestígios como ossos ocos, penas primitivas, formato das patas e até o jeito de se mover conectam as aves aos seus ancestrais gigantes.<br>
+                
+                Então, da próxima vez que você vir um pombo andando com aquele olhar desafiador...
+                Lembre-se: <strong>você está encarando um descendente direto dos reis pré-históricos.</strong><br>
+                
+                <br> A imagem ao lado demonstra, de maneira simples, a evolução dos dinossauros terópodes até as galinhas, tendo como intermédio o Archaeopteryx, o considerado primeiro dinossauro que dominou os céus.
+                </span>
+        </div>
+
+        <div class="imagemExplicacao">
+            <img src="../styles/assets/explicacaoGalinha.png" alt="imagemExplicacao">
+        </div>
+    </div>
+</body>
+</html>
