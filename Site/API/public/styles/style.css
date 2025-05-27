@@ -374,6 +374,61 @@ body {
     
 }
 
+/* avisoQuiz */
+.mainAviso{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+    font-size: 30px;
+    justify-content: center;
+    height: 91.1vh;
+    width: auto;
+    /* background-color: #12202c; */
+    background-image: url("/styles/assets/cardsWallpaper.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+.aviso {
+    display: flex;
+    padding: 15px;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #40270e;
+    border-radius: 10px;
+    width: 900px; 
+    background-color: #f7f7f7;
+}
+
+.aviso button {
+    padding: 10px;
+    border: 2px solid #a94c00;
+    border-color: #f7f7f7;
+    background-color: #a94c00;
+    color:#f7f7f7;
+    /* width: 230px; */
+    /* font-size: 30px; */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.aviso button:hover{
+    background-color: #f7f7f7;
+    color:#a94c00;
+    border: 2px solid #a94c00 
+}
+
+.card_erro {
+    border:3px solid #a94c00;
+    border-radius: 15px;
+}
+
 /* quiz */
 .mainFormulario {
     padding: 15px;

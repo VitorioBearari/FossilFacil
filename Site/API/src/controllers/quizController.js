@@ -13,6 +13,21 @@ const gabarito = {
     resp10: "espinossauro"
 };
 
+function verificarResultado(req, res) {
+    const idUsuario = req.params.idUsuario;
+
+    quizModel.verificarSeJaRespondeu(idUsuario)
+        .then(resultado => {
+            const jaRespondeu = resultado[0].total > 0;
+            res.json({ jaRespondeu });
+        })
+        .catch(erro => {
+            console.error("Erro ao verificar se usuário já respondeu o quiz:", erro);
+            res.status(500).json({ erro: "Erro ao verificar resposta do quiz." });
+        });
+}
+
+
 function salvarResultado(req, res) {
     const idUsuario = req.body.idUsuarioServer;
     const respostasUsuario = req.body.respostasUsuario;
@@ -51,20 +66,36 @@ function salvarResultado(req, res) {
 //         });
 // } 
     quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
-        .then(() => {
-            res.status(200).json({ acertos: acertos });
-        })
-        .catch(erro => {
-            console.log(erro);
+    .then(() => {
+        res.status(200).json({ acertos: acertos });
+    })
+    .catch(erro => {
+        console.log(erro);
 
-            if (erro.code === 'ER_DUP_ENTRY') {
-                res.status(400).json({ mensagem: "Você já respondeu o quiz." });
-            } else {
-                res.status(500).json({ erro: "Erro ao salvar respostas." });
-            }
-        });
-    }
+        // Como o model lança um erro com uma mensagem personalizada, verificamos pelo texto
+        if (erro.message.includes("Você já respondeu")) {
+            res.status(409).json({ mensagem: erro.message }); // 409 = Conflict
+        } else {
+            res.status(500).json({ erro: "Erro ao salvar respostas." });
+        }
+    });
+}
+    // quizModel.salvarResultadoCompleto(idUsuario, acertos, respostasDetalhadas)
+    //     .then(() => {
+    //         res.status(200).json({ acertos: acertos });
+    //     })
+    //     .catch(erro => {
+    //         console.log(erro);
+
+    //         if (erro.code === 'ER_DUP_ENTRY') {
+    //             res.status(400).json({ mensagem: "Você já respondeu o quiz." });
+    //         } else {
+    //             res.status(500).json({ erro: "Erro ao salvar respostas." });
+    //         }
+    //     });
+    // }
 
 module.exports = {
-    salvarResultado
+    salvarResultado,
+    verificarResultado
 }

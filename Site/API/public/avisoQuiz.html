@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="icon" href="../styles/assets/icone.png">
+    <script src="../js/sessao.js"></script>
+    <title>FóssilFácil</title>
+</head>
+<body onload="validarSessao()">
+    <div class="navbar">
+        <div class="logoFossilFacil">
+            <a href="index.html">
+                <img src="../styles/assets/logo.png" alt="logoFossilFacil">
+            </a>
+        </div>
+        <div class="menuNavbar">
+            <a href="/hub/index.html">Home</a>
+            <span>|</span>
+            <a href="/hub/sobremim.html">Sobre Mim</a>
+            <span>|</span>
+            <a href="/hub/cards.html">Cards</a>
+            <span>|</span>
+            <a href="../avisoQuiz.html">Quiz</a>
+        </div>
+        <div class="userNavbar">
+            <h3>Olá, <span id="b_usuario">usuario</span>!</h3>
+            <!-- <a href="../index.html"> -->
+            <button onclick="limparSessao()">Sair</button>
+            <!-- </a> -->
+        </div>
+    </div>
+
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro" style="display: none;"> <!--  -->
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+
+    <div class="mainAviso">
+        <div class="aviso">
+            <h1>⚠️ALERTA⚠️</h1>
+            <span>Este quiz só pode ser respondido <strong>UMA</strong> vez, após iniciar não é possível voltar, está pronto?</span>
+            <button onclick="checarSePodeFazerQuiz()">Iniciar Quiz</button> <!--adicionar a função pra verificar se o cara ja respondeu-->
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function checarSePodeFazerQuiz() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/quiz/verificarResultado/${idUsuario}`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.jaRespondeu) {
+                exibirMensagem("Você já respondeu o quiz! Redirecionando para a dashboard...");
+                setTimeout(() => {
+                    window.location.href = "dashboard.html";
+                }, 3000);
+            } else {
+                window.location.href = "quiz.html";
+            }
+        })
+        .catch(erro => {
+            console.error(erro);
+            exibirMensagem("Erro ao verificar status do quiz.");
+        });
+}
+
+function exibirMensagem(mensagem) {
+    const card = document.getElementById("cardErro");
+    const span = document.getElementById("mensagem_erro");
+
+    span.innerHTML = mensagem;
+    card.style.display = "flex";
+
+    setTimeout(() => {
+        card.style.display = "none";
+        span.innerHTML = "";
+    }, 5000);
+}
+
+</script>
