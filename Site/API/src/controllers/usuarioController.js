@@ -52,6 +52,7 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
+    console.log("ENTROU NO CONTROLLER CADASTRAR")
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
@@ -76,6 +77,7 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(nome, email, senha)
             .then(
                 function (resultado) {
+                    console.log(`PASSOU OS PARÂMETROS PRA MODEL: NOME ${nome}, EMAIL: ${email}, SENHA: ${senha}`)
                     res.json(resultado);
                 }
             ).catch(
