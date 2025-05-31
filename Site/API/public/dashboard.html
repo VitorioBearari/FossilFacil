@@ -38,11 +38,30 @@
         </div>
 
         <div class="dash">
-            <h2>Seu desempenho no quiz</h2>
-            <canvas id="graficoDonut" width="300" height="300"></canvas>
 
+          <div class="dashLeft">
+            <h2 id="tituloDesempenho">Seu desempenho no quiz</h2>
+            <div class="graficoDonut">
+              <canvas id="graficoDonut" width="500" height="500"></canvas>
+            </div>
+            <div class="divResumo">
+              <span id="textoDesempenho">Resumo sobre seu desempenho (vai mudar dependendo da quantidade de acertos)</span>
+            </div>
+
+            <div class="kpi">
+              <div class="dashKPI">
+
+              </div>
+              <div class="dashKPI">
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="dashRigth">
             <h2>Ranking dos melhores usuários</h2>
             <div id="ranking"></div>
+          </div>          
 
         </div>
     </div>
@@ -69,10 +88,18 @@
       }
     }
 
+    // Chart.defaults.global.defaultFontColor = "#fff";
+    Chart.defaults.color = "#f7f7f7";
+    // Chart.defaults.global.defaultFontSize = 8;
+
     // Função para montar o gráfico donut com ChartJS
     function montarGraficoDonut(acertos, total) {
       const ctx = document.getElementById('graficoDonut').getContext('2d');
       const erros = total - acertos;
+
+      const tituloGrafico = document.getElementById("tituloDesempenho")
+
+      tituloGrafico.innerHTML= `Você acertou ${acertos} de ${total} perguntas`
 
       new Chart(ctx, {
         type: 'doughnut',
@@ -80,7 +107,7 @@
           labels: ['Acertos', 'Erros'],
           datasets: [{
             data: [acertos, erros],
-            backgroundColor: ['#4caf50', '#f44336']
+            backgroundColor: ['#4caf50', '#f44336'],
           }]
         },
         options: {
@@ -88,11 +115,11 @@
           plugins: {
             legend: { position: 'bottom' },
             title: {
-              display: true,
+              display: false,
               text: `Você acertou ${acertos} de ${total} perguntas`
             }
           },
-          cutout: '60%'
+          cutout: '55%'
         }
       });
     }
