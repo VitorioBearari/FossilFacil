@@ -588,6 +588,11 @@ body {
     transition: rotate 500ms linear;
 }
 
+.card:hover{
+    /* cursor: crosshair; */
+    cursor: url("assets/loop-cursor.png"), auto;
+}
+
 
 .card h2 {
     font-size: 30px;
