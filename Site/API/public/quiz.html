@@ -182,8 +182,9 @@
         })
         .then(res => res.json())
         .then(res => {
-            alert(`Você acertou ${res.acertos} de 10!`);
             console.log(res.acertos)
+            setInterval(funcaoDoida => {window.location = "dashboard.html"}, 1000)
+                
         });
     }
 
