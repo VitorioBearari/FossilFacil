@@ -92,15 +92,18 @@ body {
 /* POMBO */
 
 .pombo {
-    height: 890px;
+    /* height: 890px; */
+    height: 100vh;
     display: flex;
     background-color: black;
     color:#f7f7f7;
+
 }
 
 .imagemPombo {
     width: 50%;
-    /* height: 100%; */
+    height: auto;
+    align-self: flex-end;
 }
 
 .imagemPombo img {
