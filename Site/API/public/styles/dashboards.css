@@ -2,8 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
 
 * {
   margin: 0px;
@@ -43,7 +41,7 @@
   flex-direction: column;
   width: 100%;
   background-color: #eed7ad;
-  gap:30px
+  gap:30px;
 }
 
 .div_ranking {
@@ -57,19 +55,31 @@
   border-radius: 30px;
   color:#f7f7f7;
   font-size: 50px;
+  box-shadow: 5px 5px 6px #6c5d4d;
 }
 
 .div_ranking h2 {
   align-self: center;
 }
 
-.div_total {
+.kpis{
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  padding: 20px;
+  gap: 30px
+}
+
+.div_total_respostas, .div_total_cadastrados{
   display: flex;
   flex-direction: column;
   background-color: #3e270d;
   border-radius: 30px;
   padding: 20px;
-  color:#f7f7f7
+  color:#f7f7f7;
+  box-shadow: 5px 5px 6px #6c5d4d;
+  height: 40%;
+  width: 50%;
 }
 
 .ranking h2 {
@@ -86,7 +96,9 @@
   background-color: #3e270d;
   border-radius: 30px; 
   padding: 20px;
+  box-shadow: 5px 5px 6px #6c5d4d;
 }
+
 .graficoDonut{
   height: auto;
   width: 500px;
