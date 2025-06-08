@@ -36,3 +36,8 @@ SELECT * FROM FossilFacil.respostasUsuario;
 SELECT rq.acertos, 10 AS totalPerguntas FROM resultadoQuiz rq JOIN usuario u ON u.id = rq.fkUsuario WHERE u.nome = ${idUsuario} ORDER BY rq.id DESC LIMIT 1;
 
 SELECT u.nome, r.acertos FROM resultadoQuiz r JOIN usuario u ON r.fkUsuario = u.id ORDER BY r.acertos DESC LIMIT 10;
+
+SELECT COUNT(*) FROM usuario; 
+
+
+SELECT COUNT(*) FROM resultadoQuiz r INNER JOIN usuario u ON r.fkUsuario = u.id;

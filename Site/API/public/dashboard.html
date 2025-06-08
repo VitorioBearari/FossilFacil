@@ -66,11 +66,11 @@
             <div class="kpis">
               <div class="div_total_respostas">
                 <h2><strong>Total de usuários que responderam o quiz:</strong></h2>
-                <div class="total_respostas"></div>
+                <div id="total_respostas"></div>
               </div>
               <div class="div_total_cadastrados">
                 <h2><strong>Total de usuários que se cadastraram:</strong></h2>
-                <div class="total_cadastrados"></div>
+                <div id="total_cadastrados"></div>
               </div>         
             </div>
           </div>          
@@ -87,25 +87,29 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    // Função para buscar dados da dashboard via API
-    async function buscarDadosDashboard() {
+    async function buscarDadosDashboard() { // tem que ser assincrona, ta tentenado devolver antes da requisição chegar
       try {
         const response = await fetch(`/dashboard/dados/${idUsuario}`);
-        console.log(`/dashboard/dados/${idUsuario}`)
         const data = await response.json();
+        
+        console.log("Resposta da APIIIIIIIII:", data); 
+        console.log("Total de respostas recebido:", data.totalRespostas);
+
+        console.log(`/dashboard/dados/${idUsuario}`)
         montarGraficoDonut(data.usuario.acertos, data.usuario.totalPerguntas);
         montarRanking(data.ranking);
+        mostrarTotalRespostas(data.totalRespostas[0].totalRespostas)
+        mostrarTotalCadastros(data.totalCadastros[0].totalCadastros)
+
+        console.log(data.totalRespostas)
       } catch (error) {
         console.error('Erro ao carregar dados da dashboard:', error);
       }
     }
 
-    // Chart.defaults.global.defaultFontColor = "#fff";
     Chart.defaults.color = "#f7f7f7";
-    // Chart.defaults.global.defaultFontSize = 8;
 
-    // Função para montar o gráfico donut com ChartJS
-    function montarGraficoDonut(acertos, total) {
+    function montarGraficoDonut(acertos, total) { // dashLeft
       const ctx = document.getElementById('graficoDonut').getContext('2d');
       const erros = total - acertos;
 
@@ -136,10 +140,9 @@
       });
     }
 
-    // Função para montar o ranking na página
-    function montarRanking(ranking) {
+    function montarRanking(ranking) { // dashRight UP
       const rankingDiv = document.getElementById('ranking');
-      rankingDiv.innerHTML = ''; // limpa conteúdo anterior
+      rankingDiv.innerHTML = ''; 
 
       ranking.forEach((usuario, index) => {
         const div = document.createElement('div');
@@ -148,6 +151,25 @@
       });
     }
 
-    // Chama a função para carregar os dados assim que a página carregar
+    function mostrarTotalRespostas(totalRespostas){
+      const respostasDiv = document.getElementById('total_respostas');
+      respostasDiv.innerHTML = '';
+
+      console.log(totalRespostas)
+      const div = document.createElement('div');
+      div.textContent = `${totalRespostas} usuários`
+      respostasDiv.appendChild(div)
+    }
+
+    function mostrarTotalCadastros(totalCadastros){
+      const cadastrosDiv = document.getElementById('total_cadastrados')
+      cadastrosDiv.innerHTML = ''
+      console.log(cadastrosDiv)
+
+      const div = document.createElement('div')
+      div.textContent = `${totalCadastros} usuários`
+      cadastrosDiv.appendChild(div)
+    }
+
     window.onload = buscarDadosDashboard;
   </script>

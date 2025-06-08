@@ -1,21 +1,24 @@
 var dashboardModel = require('../models/dashboardModel');
 
-async function obterDadosDashboard(req, res) {
+async function obterDadosDashboard(req, res) { // vai puxar todos os dados de uma vez
     const idUsuario = req.params.idUsuario;
 
     try {
-        // Busca os dados do usuário para o gráfico donut (acertos, total perguntas)
         const dadosUsuario = await dashboardModel.buscarDadosUsuario(idUsuario);
 
-        // Busca o ranking geral dos usuários
         const ranking = await dashboardModel.buscarRanking();
 
-        // Você pode adicionar outras consultas para KPIs aqui
+        const totalRespostas = await dashboardModel.buscarRespostas();
+        
+        const totalCadastos = await dashboardModel.buscarCadastros()
+
+        console.log({ totalRespostas })
 
         res.json({
             usuario: dadosUsuario,
             ranking: ranking,
-            // kpis: {...} // futuramente
+            totalRespostas: totalRespostas,
+            totalCadastros: totalCadastos
         });
     } catch (erro) {
         console.error("Erro ao obter dados da dashboard:", erro);
@@ -23,6 +26,7 @@ async function obterDadosDashboard(req, res) {
     }
 }
 
+1
 module.exports = {
     obterDadosDashboard
 };

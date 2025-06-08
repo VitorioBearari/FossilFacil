@@ -30,7 +30,26 @@ function buscarRanking() {
     return database.executar(query);
 }
 
+function buscarRespostas(){
+    const query = `
+        SELECT COUNT(*) AS totalRespostas FROM resultadoQuiz r INNER JOIN usuario u ON r.fkUsuario = u.id;
+    `
+    return database.executar(query)/*.then(resultado => {
+    //     console.log("Resultado bruto query: ", resultado)
+    //     return resultado[0].total;
+    // });*/
+}
+
+function buscarCadastros(){
+    const query = `
+        SELECT COUNT(*) AS totalCadastros FROM usuario;
+    `
+    return database.executar(query)
+}
+
 module.exports = {
     buscarDadosUsuario,
-    buscarRanking
+    buscarRanking,
+    buscarCadastros,
+    buscarRespostas
 };
