@@ -1,8 +1,6 @@
 var database = require('../database/config');
 
 function buscarDadosUsuario(idUsuario) {
-    // Consulta para pegar total de perguntas e acertos do usuário
-    // Supondo que resultadoQuiz tem fkUsuario, acertos e totalPerguntas (se não tiver totalPerguntas, pode usar 10 fixo)
     const query = `
         SELECT rq.acertos, 10 AS totalPerguntas FROM resultadoQuiz rq JOIN usuario u ON u.id = rq.fkUsuario WHERE u.nome = "${idUsuario}" ORDER BY rq.id DESC LIMIT 1;
     `;
@@ -13,7 +11,6 @@ function buscarDadosUsuario(idUsuario) {
                 totalPerguntas: resultado[0].totalPerguntas
             };
         } else {
-            // Caso usuário não tenha respondido ainda
             return {
                 acertos: 0,
                 totalPerguntas: 10
@@ -34,10 +31,7 @@ function buscarRespostas(){
     const query = `
         SELECT COUNT(*) AS totalRespostas FROM resultadoQuiz r INNER JOIN usuario u ON r.fkUsuario = u.id;
     `
-    return database.executar(query)/*.then(resultado => {
-    //     console.log("Resultado bruto query: ", resultado)
-    //     return resultado[0].total;
-    // });*/
+    return database.executar(query)
 }
 
 function buscarCadastros(){
