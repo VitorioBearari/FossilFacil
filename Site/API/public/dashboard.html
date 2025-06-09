@@ -113,8 +113,18 @@
       const erros = total - acertos;
 
       const tituloGrafico = document.getElementById("tituloDesempenho")
+      const textoDesempenho = document.getElementById("textoDesempenho")
 
       tituloGrafico.innerHTML= `Você acertou ${acertos} de ${total} perguntas`
+
+      if (acertos < 6) {
+        textoDesempenho.innerHTML = "Você ainda é um <strong>dinossaurinho recém-nascido</strong> no mundo pré-histórico! Estude mais e em breve você dominará a era dos répteis gigantes!";
+    } else if (acertos < 8) {
+        textoDesempenho.innerHTML = "Bom trabalho! Você já é um <strong>Velociraptor esperto</strong>, ágil e atento aos detalhes do passado! Mas ainda há espaço para evoluir e se tornar um verdadeiro T. rex do conhecimento.";
+    } else {
+        textoDesempenho.innerHTML = "Impressionante! Você é um <strong>Tyrannosaurus rex do conhecimento</strong>, soberano da era dos dinossauros! Sua sabedoria pré-histórica domina esta terra!";
+    }
+
 
       new Chart(ctx, {
         type: 'doughnut',
@@ -134,7 +144,7 @@
               text: `<strong>Você acertou ${acertos} de ${total} perguntas</strong>`
             }
           },
-          cutout: '0%'
+          cutout: '55%'
         }
       });
     }

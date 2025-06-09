@@ -39,7 +39,7 @@
 .dashRigth {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
   background-color: #eed7ad;
   gap:30px;
 }
@@ -95,10 +95,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: fit-content;
+  width: 40%;
   background-color: #3e270d;
   border-radius: 30px; 
-  padding: 20px;
+  padding: 30px;
   box-shadow: 5px 5px 6px #6c5d4d;
 }
 
@@ -107,6 +107,7 @@
 }
 
 .graficoDonut{
+  /* position: absolute; */
   height: auto;
   width: 500px;
   display: flex;
@@ -114,6 +115,14 @@
   align-items: center;
   justify-content: space-evenly;
   /* gap:space-evenly; */
+}
+
+.divResumo {
+   height: fit-content;
+}
+
+#textoDesempenho {
+  font-size: 35px;
 }
 
 canvas {
